@@ -12,9 +12,14 @@
 // (O) 5. create function for getting ingredients data from API]
 // fetch from spoonacular
 
-function.getIngredients(id){
+function getIngredients(id){
+
     $.ajax({
-    url:"https://api.spoonacular.com/recipes/"+id+"/information?apiKey=54dabc814050472fb2b3631a332e7a58",
+    url: "https://api.spoonacular.com/recipes/"+id+"/information?apiKey=54dabc814050472fb2b3631a332e7a58",
+    success:function(data) {
+        console.log('success', data);
+
+    }
     });
 }
 
@@ -22,7 +27,7 @@ function.getIngredients(id){
 // (O) 6. display recipe function
     // for loop for ingredients
 
-function.displayRecipe(q){
+function displayRecipe(q){
     $.ajax({
         url:"https://api.spoonacular.com/recipes/search?apiKey=54dabc814050472fb2b3631a332e7a58&number=1&query="+q,
 
