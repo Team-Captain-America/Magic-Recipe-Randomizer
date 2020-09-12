@@ -6,34 +6,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Magic Recipe Ball</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- Scripts -->
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script></head>
-<body>
-  <!-- NNv section -->
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+
+  <body>
+  <!-- Nav section -->
+  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="container is-fluid">
       <!-- App logo -->
       <div class="navbar-brand">
-        <a class="navbar-item">
-          <img src="/assets/img/culinary-icon.png">
-        </a>
+        <figure class="image is-48x48 mr-5">
+          <img class="is-rounded" src="/assets/img/culinary-icon.png">
+        </figure>
       </div>
       <!-- Title of the app -->
       <div>
-        <h1 class="title">Magic Recipe Randomizer</h1>
+        <h1 class="title textcolor">Magic Recipe Randomizer</h1>
       </div>
-    </div>
+    </div>  
   </nav>
 
   <!-- Introduction to app -->
-  <section class="hero is-info-title">
-    <div class="hero-body">
+  <section class="hero is-info-title pt-6">
+    <div class="hero-body textcolor">
       <div class="container is-fluid">
-        <h1 class="title is-4">
+        <h1 class="title is-4 textcolor">
           Find recipes with ingredients you already have!
         </h1>
         <br>
-        <p class="content is-6">
+        <p class="label content is-6">
           Do you waste time looking for recipes to only realize that you're short an ingredient on the list?
           <br><br>
           Just enter up to 5 ingredients you already have at home and we'll
@@ -43,53 +46,53 @@
     </div>
 
   <!-- Input form for ingredients -->
-  <form id="form">
+  <form class="form" id="form">
     <div class="container is-fluid">
-    <div class="control is-expanded">
-      <div class="field-body">
-        <label class="label">Choose a protein:</label>
-        <div class="select">
-          <select  name="input" id="input0">
-            <option value="Chicken">Chicken</option>
-            <option value="Beef">Beef</option>
-            <option value="Pork">Pork</option>
-            <option value="Shrimp">Shrimp</option>
-            <option value="Tofu">Tofu</option>
-          </select>
+      <div class="is-horizontal field-body">
+        <div class="field">
+          <label class="label">Choose a protein:</label>
+          <div class="control">
+            <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input0">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Add a vegetable:</label>
+          <div class="control">
+          <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input1">
+        </div>
+        </div>
+        <div class="field">
+          <label class="label">Add a vegetable:</label>
+          <div class="control">
+          <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input2">
+        </div>
+        </div>
+        <div class="field">
+          <label class="label">Add a spice:</label>
+          <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input3">
+        </div>
+        <div class="field">
+          <label class="label">Add a spice:</label>
+            <div class="control">
+          <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input4">
+        </div>
         </div>
       </div>
-      <div class="field">
-        <label class="label">Add a vegetable:</label>
-        <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input1">
+    <div class="field is-vertical">
+      <div class="control ml-3">
+        <input class="button is-primary is-pulled-right" type="submit" id="submittext" value="Find a Recipe">
       </div>
-      <div class="field">
-        <label class="label">Add a vegetable:</label>
-        <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input2">
-      </div>
-      <div class="field">
-        <label class="label">Add a spice:</label>
-        <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input3">
-      </div>
-      <div class="field">
-        <label class="label">Add a spice:</label>
-        <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input4">
-      </div>
-      <div class="field">
-        <div class="control ml-3">
-          <button class="button is-primary" id="submittext">Submit</button>
-        </div>
-      </div>
-  </div>
-
-  </section>
+    </div>
+    </div>
   </form>
+</section>
 
   <hr>
 
   <!-- To showcase the confirmed ingredients and basic details, 
     more of a visual... maybe we can add "a suggested drink 
     based on the protein instead of the entire dish?" -->
-  <section class="" id="showcase">
+  <section class="showcase" id="showcase">
     <div class="container is-fluid">
       <div class="tile is-ancestor">
         <div class="tile is-parent">
@@ -153,10 +156,11 @@
           </article>
         </div>
       </div>
-
+    </div>
       
     <!-- Recipe section -->
-      <div class="tile box is-ancestor has-background-primary-dark">
+      <div class="container is-fluid mb-6 mt-6">
+      <div class="tile box is-ancestor has-background-grey-light is-vertical">
         <div class="tile is-parent is-primary">
           <article class="tile is-child">
             <div class="content">
@@ -165,28 +169,32 @@
               </figure>
             </div>
           </article>
-        </div>
-        <div class="tile is-parent is-8 is-vertical">
-          <article class="tile is-child notification">
+          <article class="tile is-child notification is-9">
             <p class="title">Recipe Title</p>
             <div class="content">
               <p id="ingredient-description">There are many ways to cook your chicken.</p>
             </div>
           </article>
-          <article class="tile is-child">
-            <button class="is-child is-pulled-right is-link is-hovered" type="submit" id="drinkidea">Pair with a cocktail!</button>
-          </article>  
         </div>
-      </div>
+        <div class="tile is-parent is-vertical">
+        <article class="tile is-child">
+          <div class="field">
+            <div class="control">
+              <input class="button is-primary is-pulled-right is-hovered" type="submit" id="drinkidea" value="Pair with a cocktail">
+            </div>
+          </div>
+        </article>  
+        </div>
     </div>
-  </section>
+  </div>
+</section>
 
 <hr>
 
 <!-- Show a random drink name, thumbnail and ingredients -->
 <section id="drinkcard">
   <div class="container is-fluid mt-6 mb-6">
-    <div class="tile box is-ancestor is-vertical has-background-dark">
+    <div class="tile box is-ancestor is-vertical has-background-grey-light">
       <div class="tile is-parent is-vertical">
         <article class="tile notification content is-child">
           <p class="subtitle is-5">Try this cocktail:</p>
@@ -202,7 +210,7 @@
       </div>
       <div class="tile is-parent is-vertical">
         <article class="tile is-child">
-          <button class="button is-pulled-right is-hovered is-link" type="reset" id="resetdrink">Try another cocktail</button>
+          <input class="button is-primary is-pulled-right is-hovered" type="reset" id="resetdrink" value="Try another cocktail">
         </article>
       </div>
     </div>
@@ -230,6 +238,7 @@
       </div>
     </div>
   </section>
+
 
 <script src="./assets/js/ingredients.js"></script>
 
