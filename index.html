@@ -9,27 +9,31 @@
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script></head>
 <body>
+  <!-- NNv section -->
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="container is-fluid">
+      <!-- App logo -->
       <div class="navbar-brand">
         <a class="navbar-item">
           <img src="/assets/img/culinary-icon.png">
         </a>
       </div>
+      <!-- Title of the app -->
       <div>
         <h1 class="title">Magic Recipe Randomizer</h1>
       </div>
     </div>
   </nav>
 
+  <!-- Introduction to app -->
   <section class="hero is-info-title">
     <div class="hero-body">
       <div class="container is-fluid">
-        <h1 class="title">
+        <h1 class="title is-4">
           Find recipes with ingredients you already have!
         </h1>
         <br>
-        <p class="subtitle">
+        <p class="content is-6">
           Do you waste time looking for recipes to only realize that you're short an ingredient on the list?
           <br><br>
           Just enter up to 5 ingredients you already have at home and we'll
@@ -37,62 +41,48 @@
         </p>
       </div>
     </div>
-  </section>
 
-  <!-- form design option 1 -->
-<<<<<<< HEAD
-  <div class="container is-fluid">
-    <form class="input-form ml-6">
-      <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" id="input0">
-      <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" id="input1">
-      <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" id="input2">
-      <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" id="input3">
-      <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" id="input4">
-      <div class="control ml-3">
-        <button class="button is-primary" id="submit">Submit</button>
+  <!-- Input form for ingredients -->
+  <form id="form">
+    <div class="container is-fluid">
+    <div class="control is-expanded">
+      <div class="field-body">
+        <label class="label">Choose a protein:</label>
+        <div class="select">
+          <select  name="input" id="input0">
+            <option value="Chicken">Chicken</option>
+            <option value="Beef">Beef</option>
+            <option value="Pork">Pork</option>
+            <option value="Shrimp">Shrimp</option>
+            <option value="Tofu">Tofu</option>
+          </select>
+        </div>
       </div>
-    </form>
+      <div class="field">
+        <label class="label">Add a vegetable:</label>
+        <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input1">
+      </div>
+      <div class="field">
+        <label class="label">Add a vegetable:</label>
+        <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input2">
+      </div>
+      <div class="field">
+        <label class="label">Add a spice:</label>
+        <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input3">
+      </div>
+      <div class="field">
+        <label class="label">Add a spice:</label>
+        <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input4">
+      </div>
+      <div class="field">
+        <div class="control ml-3">
+          <button class="button is-primary" id="submittext">Submit</button>
+        </div>
+      </div>
   </div>
 
-  <!-- <hr> -->
-
-  <!-- form design option 2 -->
-  <!-- <form>
-    <div class="field has-addons ml-6">
-      <div class="control is-small">
-        <div class="select is-fullwidth">
-          <select name="protein">
-            <option value="Chicken">Chicken</option>
-            <option value="Beef">Beef</option>
-            <option value="Pork">Pork</option>
-            <option value="Shrimp">Shrimp</option>
-            <option value="Tofu">Tofu</option>
-          </select>
-        </div>
-      </div>
-      <div class="control is-flex">
-        <button type="submit" class="button is-primary">Select</button>
-      </div>
-    </div>
-    <div class="field has-addons ml-6">
-      <div class="control is-small">
-        <div class="select is-fullwidth">
-          <select name="protein">
-            <option value="Chicken">Chicken</option>
-            <option value="Beef">Beef</option>
-            <option value="Pork">Pork</option>
-            <option value="Fish">Fish</option>
-            <option value="Shrimp">Shrimp</option>
-            <option value="Tofu">Tofu</option>
-            <option value="Other">Other</option>
-          </select>
-        </div>
-      </div>
-      <div class="control is-flex">
-        <button type="submit" class="button is-primary">Select</button>
-      </div>
-    </div>
-  </form> -->
+  </section>
+  </form>
 
   <hr>
 
@@ -166,7 +156,6 @@
 
       
     <!-- Recipe section -->
-  
       <div class="tile box is-ancestor has-background-primary-dark">
         <div class="tile is-parent is-primary">
           <article class="tile is-child">
@@ -185,7 +174,7 @@
             </div>
           </article>
           <article class="tile is-child">
-            <button class="is-child is-pulled-right is-hovered" type="submit" id="drinkidea">Pair with a cocktail!</button>
+            <button class="is-child is-pulled-right is-link is-hovered" type="submit" id="drinkidea">Pair with a cocktail!</button>
           </article>  
         </div>
       </div>
@@ -200,15 +189,20 @@
     <div class="tile box is-ancestor is-vertical has-background-dark">
       <div class="tile is-parent is-vertical">
         <article class="tile notification content is-child">
+          <p class="subtitle is-5">Try this cocktail:</p>
           <div class="has-text-left" id="drink"></div>
           <div class="has-text-centered"id="drinkimage"></div>
-          <div class="has-text-left"id="drinkingredients"></div>
+          <div class="has-text-left">
+            <p class="subtitle is-5">Ingredients:</p>
+            <ol id="drinkingredient"></ol>
+          </div>
+          <p class="subtitle is-5">How to make it:</p>
           <div class="has-text-left"id="drinkrecipe"></div>
         </article>
       </div>
       <div class="tile is-parent is-vertical">
         <article class="tile is-child">
-          <button class="button is-pulled-right is-hovered" type="reset" id="resetdrink">Try another cocktail</button>
+          <button class="button is-pulled-right is-hovered is-link" type="reset" id="resetdrink">Try another cocktail</button>
         </article>
       </div>
     </div>
