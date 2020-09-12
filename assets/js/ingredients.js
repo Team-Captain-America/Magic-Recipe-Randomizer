@@ -23,6 +23,7 @@
 // //// (M) 4. set localstorage
 // localStorage.setItem('ingredients', JSON.stringify(userIngredients));
 
+
 // cocktail function to get random suggestion based on previous click
 var getDrink = function() {
     var getDrinkUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
