@@ -7,17 +7,34 @@
 
 //// (M) 4. set localstorage
 
-// (O) 5. create function for getting ingredients data from API
-function getIngredients(){
-    // fetch from spoonacular
-    fetch()
-    .then()
 
-    //// 6. set localstorage
+
+// (O) 5. create function for getting ingredients data from API]
+// fetch from spoonacular
+
+function getIngredients(id){
+
+    $.ajax({
+    url: "https://api.spoonacular.com/recipes/"+id+"/information?apiKey=54dabc814050472fb2b3631a332e7a58",
+    success:function(data) {
+        console.log('success', data);
+
+    }
+    });
 }
+
 
 // (O) 6. display recipe function
     // for loop for ingredients
+
+function displayRecipe(q){
+    $.ajax({
+        url:"https://api.spoonacular.com/recipes/search?apiKey=54dabc814050472fb2b3631a332e7a58&number=1&query="+q,
+
+    });
+}
+
+console.log(displayRecipe)
 
 // (A) 7. run second API for drinks to match with the recipe
     // display on page
