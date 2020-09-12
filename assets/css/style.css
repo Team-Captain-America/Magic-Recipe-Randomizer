@@ -11,11 +11,11 @@ body {
 
 .navbar {
     background-color:rgba(92, 191, 176, 90%);
-    margin: 5px;
     padding: .8em;
     border-radius: 5px;
 }
 
 .textcolor, .hero, .label {
     color: #ffffff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
 }
