@@ -2,21 +2,50 @@
 
 // (A) 3. function to collect all input ingredients
 
-// create localstorage for upcoming array
+// Hidden recipe card and drink card sections on page load
+
+$(function() {
+    $('#content-container').hide();
+});
+
+    // create localstorage for upcoming array
 var list = JSON.parse(localStorage.getItem('ingredients')) || [];
 
-function formInput() {
-    // $(document).ready(function() {
-    //  create input variables from all ingredients
-    $("#submittext").on("click", function(event){
-        var inputE1 = $('#input0').val();
-        var inputE2 = $('#input1').val();
-        var inputE3 = $('#input2').val();
-        var inputE4 = $('#input3').val();
-        var inputE5 = $('#input4').val();
+    $(document).ready(function() {
+    
+        // Hide the ingredients search section when the recipe is displayed
+        $("#submitinput").click(function(){
+            $('.form').hide();
+            });
 
-        console.log(inputE1, inputE2, inputE3, inputE4, inputE5);
+        // Create variables from all input ingredients
+        // Check for click events on the form
+        var inputE1 = $('#input').val();
 
+        var taskArray = new Array();
+        $("input[id=input0").each(function() {
+            console.log(taskArray);
+        });
+
+        // Add the new variable val to Ingredients0
+        // inputE1.val('new val');
+        
+        console.log(inputE1);
+    });
+        // ').click(function() {
+
+        //         var inputE1 = $('#input0').val();
+        //         var inputE2 = $('#input1').val();
+        //         var inputE3 = $('#input2').val();
+        //         var inputE4 = $('#input3').val();
+        //         var inputE5 = $('#input4').val();
+        
+
+
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            // $(".navbar-burger").toggleClass("is-active");
+            // $(".navbar-menu").toggleClass("is-active");
+    
     //     var taskArray = new Array();
     //     $("input[name=input]").each(function() {
     //    taskArray.push($(this).val());
@@ -25,15 +54,31 @@ function formInput() {
     //     });
 
         // update ingredients list into array
-        list.push(ingredients);
+        // list.push(ingredients);
 
-        displayIngredients(list);
+        // displayIngredients();
 
         //// (M) 4. set localstorage
         localStorage.setItem('ingredients', JSON.stringify(list));
 
         // (O) 5. create function for getting ingredients data from API with input variables
-        function getIngredients(id){
+        
+        
+        var getIngredients = function() {
+            var urlE1 = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=";
+            // var urlE6 = "/findByIngredients?apiKey=54dabc814050472fb2b3631a332e7a58";
+            var urlE7 = "&number=8&limitLicense=true&ranking=1&ignorePantry=true";
+            var urlE2 = "apples,";
+            var urlE3 = "flour,";
+            var urlE4 = "sugar";
+            var getIngredientsUrl = urlE1 + urlE2 + urlE3 + urlE4 + urlE7;
+            
+            console.log(getIngredientsUrl);
+            
+
+            // Display the result onpage
+            $.getJSON(urlE1 + urlE2+ urlE6).done(function(data){
+                console.log(data);
 
             $.ajax({
             url: "https://api.spoonacular.com/recipes/"+id+"/information?apiKey=54dabc814050472fb2b3631a332e7a58",
@@ -42,7 +87,6 @@ function formInput() {
             }
             });
         };
-    });
 
     // (O) 6. display recipe function
     function displayIngredients(list) {
@@ -63,7 +107,6 @@ function formInput() {
             //   <p class="" id="ingredient-description"></p>
         }
     };
-}
 
 // (M) 7. run second API for drinks to match with the recipe
 // Cocktail function to get random suggestion based on previous click
