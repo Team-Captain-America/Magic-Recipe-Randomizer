@@ -1,0 +1,30 @@
+/* page background image */
+html { 
+     background-image: url(/assets/img/OH3C840.jpg);
+     background-position: center center;
+     background-repeat: no-repeat;
+     background-attachment: fixed;
+     background-size: cover;
+     background-color: #ffffff;
+     opacity: 0.85;
+}
+
+.navbar {
+    background-color:rgba(92, 191, 176, 90%);
+    padding: .8em;
+    border-radius: 5px;
+}
+
+.textcolor, .hero, .label {
+    color: #ffffff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.hero {
+    vertical-align: middle;
+}
+
+/* need to align the button on the input form to center */
+.form.button {
+    align-items: center;
+}
