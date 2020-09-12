@@ -6,34 +6,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Magic Recipe Ball</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <!-- Scripts -->
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script></head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+</head>
+
 <body>
-  <!-- NNv section -->
-  <nav class="navbar" role="navigation" aria-label="main navigation">
+  <!-- Nav section -->
+  <nav class="navbar is-fixed-top" role="navigation" aria-label="main navigation">
     <div class="container is-fluid">
       <!-- App logo -->
       <div class="navbar-brand">
-        <a class="navbar-item">
-          <img src="/assets/img/culinary-icon.png">
-        </a>
+        <figure class="image is-48x48 mr-5">
+          <img class="is-rounded" src="/assets/img/culinary-icon.png">
+        </figure>
       </div>
       <!-- Title of the app -->
       <div>
-        <h1 class="title">Magic Recipe Randomizer</h1>
+        <h1 class="title textcolor">Magic Recipe Randomizer</h1>
       </div>
     </div>
   </nav>
 
   <!-- Introduction to app -->
-  <section class="hero is-info-title">
-    <div class="hero-body">
+  <section class="hero is-info-title pt-6">
+    <div class="hero-body textcolor">
       <div class="container is-fluid">
-        <h1 class="title is-4">
+        <h1 class="title is-4 textcolor">
           Find recipes with ingredients you already have!
         </h1>
         <br>
-        <p class="content is-6">
+        <p class="label content is-6">
           Do you waste time looking for recipes to only realize that you're short an ingredient on the list?
           <br><br>
           Just enter up to 5 ingredients you already have at home and we'll
@@ -42,196 +46,183 @@
       </div>
     </div>
 
-  <!-- Input form for ingredients -->
-  <form id="form">
-    <div class="container is-fluid">
-    <div class="control is-expanded">
-      <div class="field-body">
-        <label class="label">Choose a protein:</label>
-        <div class="select">
-          <select  name="input" id="input0">
-            <option value="Chicken">Chicken</option>
-            <option value="Beef">Beef</option>
-            <option value="Pork">Pork</option>
-            <option value="Shrimp">Shrimp</option>
-            <option value="Tofu">Tofu</option>
-          </select>
+    <!-- Input form for ingredients -->
+    <form class="form" id="form">
+      <div class="container is-fluid">
+        <div class="is-horizontal field-body">
+          <div class="field">
+            <label class="label">Add a protein:</label>
+            <div class="control">
+              <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input0">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Add a vegetable:</label>
+            <div class="control">
+              <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input1">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Add a vegetable:</label>
+            <div class="control">
+              <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input2">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Add a spice:</label>
+            <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input3">
+          </div>
+          <div class="field">
+            <label class="label">Add a spice:</label>
+            <div class="control">
+              <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input4">
+            </div>
+          </div>
+        </div>
+        <div class="field is-vertical">
+          <div class="control ml-3">
+            <input class="button is-primary is-pulled-right" type="submit" id="submitinput" value="Find a Recipe">
+          </div>
         </div>
       </div>
-      <div class="field">
-        <label class="label">Add a vegetable:</label>
-        <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input1">
-      </div>
-      <div class="field">
-        <label class="label">Add a vegetable:</label>
-        <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input2">
-      </div>
-      <div class="field">
-        <label class="label">Add a spice:</label>
-        <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input3">
-      </div>
-      <div class="field">
-        <label class="label">Add a spice:</label>
-        <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input4">
-      </div>
-      <div class="field">
-        <div class="control ml-3">
-          <button class="button is-primary" id="submittext">Submit</button>
-        </div>
-      </div>
-  </div>
-
+    </form>
   </section>
-  </form>
 
-  <hr>
-
-  <!-- To showcase the confirmed ingredients and basic details, 
+  <section id="content-container">
+    <!-- To showcase the confirmed ingredients and basic details, 
     more of a visual... maybe we can add "a suggested drink 
     based on the protein instead of the entire dish?" -->
-  <section class="" id="showcase">
-    <div class="container is-fluid">
-      <div class="tile is-ancestor">
-        <div class="tile is-parent">
-          <article class="tile is-child box">
-            <button class="delete"></button>
-            <p class="subtitle" id="ingredient-name">Ingredient 0</p>
-            <figure class="image is-128x128">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-            </figure><br>
-            <div class="content">
-              <p class="" id="ingredient-description">There are many ways to cook your chicken.</p>
-            </div>
-          </article>
-        </div>
-        <div class="tile is-parent">
-          <article class="tile is-child box">
-            <button class="delete"></button>
-            <p class="subtitle" id="ingredient-name">Ingredient 1</p>
-            <figure class="image is-128x128">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-            </figure><br>
-            <div class="content">
-              <p class="" id="ingredient-description">There are many ways to cook your chicken.</p>
-            </div>
-          </article>
-        </div>
-        <div class="tile is-parent">
-          <article class="tile is-child box">
-            <button class="delete"></button>
-            <p class="subtitle" id="ingredient-name">Ingredient 2</p>
-            <figure class="image is-128x128">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-            </figure><br>
-            <div class="content">
-              <p class="" id="ingredient-description">There are many ways to cook your chicken.</p>
-            </div>
-          </article>
-        </div>
-        <div class="tile is-parent">
-          <article class="tile is-child box">
-            <button class="delete"></button>
-            <p class="subtitle" id="ingredient-name">Ingredient 3</p>
-            <figure class="image is-128x128">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-            </figure><br>
-            <div class="content">
-              <p class="" id="ingredient-description">There are many ways to cook your chicken.</p>
-            </div>
-          </article>
-        </div>
-        <div class="tile is-parent">
-          <article class="tile is-child box">
-            <button class="delete"></button>
-            <p class="subtitle" id="ingredient-name">Ingredient 4</p>
-            <figure class="image is-128x128">
-              <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-            </figure><br>
-            <div class="content">
-              <p class="" id="ingredient-description">There are many ways to cook your chicken.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-
-      
-    <!-- Recipe section -->
-      <div class="tile box is-ancestor has-background-primary-dark">
-        <div class="tile is-parent is-primary">
-          <article class="tile is-child">
-            <div class="content">
-              <figure class="image is-128x128">
-                <img class="is-square" src="https://bulma.io/images/placeholders/128x128.png">
-              </figure>
-            </div>
-          </article>
-        </div>
-        <div class="tile is-parent is-8 is-vertical">
-          <article class="tile is-child notification">
-            <p class="title">Recipe Title</p>
-            <div class="content">
-              <p id="ingredient-description">There are many ways to cook your chicken.</p>
-            </div>
-          </article>
-          <article class="tile is-child">
-            <button class="is-child is-pulled-right is-link is-hovered" type="submit" id="drinkidea">Pair with a cocktail!</button>
-          </article>  
-        </div>
-      </div>
-    </div>
-  </section>
-
-<hr>
-
-<!-- Show a random drink name, thumbnail and ingredients -->
-<section id="drinkcard">
-  <div class="container is-fluid mt-6 mb-6">
-    <div class="tile box is-ancestor is-vertical has-background-dark">
-      <div class="tile is-parent is-vertical">
-        <article class="tile notification content is-child">
-          <p class="subtitle is-5">Try this cocktail:</p>
-          <div class="has-text-left" id="drink"></div>
-          <div class="has-text-centered"id="drinkimage"></div>
-          <div class="has-text-left">
-            <p class="subtitle is-5">Ingredients:</p>
-            <ol id="drinkingredient"></ol>
+    <section class="showcase" id="showcase">
+      <div class="container is-fluid">
+        <div class="tile is-ancestor">
+          <div class="tile is-parent">
+            <article class="tile is-child box">
+              <button class="delete"></button>
+              <p class="subtitle" id="ingredient-name">Ingredient 0</p>
+              <figure class="image is-64x64">
+                <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+              </figure><br>
+              <div class="content">
+                <p class="" id="ingredient-description">There are many ways to cook your chicken.</p>
+              </div>
+            </article>
           </div>
-          <p class="subtitle is-5">How to make it:</p>
-          <div class="has-text-left"id="drinkrecipe"></div>
-        </article>
-      </div>
-      <div class="tile is-parent is-vertical">
-        <article class="tile is-child">
-          <button class="button is-pulled-right is-hovered is-link" type="reset" id="resetdrink">Try another cocktail</button>
-        </article>
-      </div>
-    </div>
-  </div>
-</section>
-
-  <!-- This can give the user an option to display a URL link preview... might not be the right element -->
-  <section class="" id="modal-recipe">
-    <div class="container is-fluid">
-      <div class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-card">
-          <header class="modal-card-head">
-            <p class="modal-card-title">Modal title</p>
-            <button class="delete" aria-label="close"></button>
-          </header>
-          <section class="modal-card-body">
-            <!-- Content ... -->
-          </section>
-          <footer class="modal-card-foot">
-            <button class="button is-success">Save changes</button>
-            <button class="button">Cancel</button>
-          </footer>
+          <div class="tile is-parent">
+            <article class="tile is-child box">
+              <button class="delete"></button>
+              <p class="subtitle" id="ingredient-name">Ingredient 1</p>
+              <figure class="image is-64x64">
+                <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+              </figure><br>
+              <div class="content">
+                <p class="" id="ingredient-description">There are many ways to cook your chicken.</p>
+              </div>
+            </article>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child box">
+              <button class="delete"></button>
+              <p class="subtitle" id="ingredient-name">Ingredient 2</p>
+              <figure class="image is-64x64">
+                <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+              </figure><br>
+              <div class="content">
+                <p class="" id="ingredient-description">There are many ways to cook your chicken.</p>
+              </div>
+            </article>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child box">
+              <button class="delete"></button>
+              <p class="subtitle" id="ingredient-name">Ingredient 3</p>
+              <figure class="image is-64x64">
+                <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+              </figure><br>
+              <div class="content">
+                <p class="" id="ingredient-description">There are many ways to cook your chicken.</p>
+              </div>
+            </article>
+          </div>
+          <div class="tile is-parent">
+            <article class="tile is-child box">
+              <button class="delete"></button>
+              <p class="subtitle" id="ingredient-name">Ingredient 4</p>
+              <figure class="image is-64x64">
+                <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+              </figure><br>
+              <div class="content">
+                <p class="" id="ingredient-description">There are many ways to cook your chicken.</p>
+              </div>
+            </article>
+          </div>
         </div>
       </div>
-    </div>
+
+      <!-- Recipe section -->
+      <div id="recipecard">
+        <div class="container is-fluid mb-6 mt-6">
+          <div class="tile box is-ancestor has-background-grey-light is-vertical">
+            <div class="tile is-parent">
+              <article class="tile is-child">
+                <div class="content">
+                  <figure class="image is-128x128">
+                    <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
+                  </figure>
+                </div>
+              </article>
+              <article class="tile is-child notification is-9">
+                <p class="title">Recipe Title</p>
+                <div class="content">
+                  <p id="ingredient-description">There are many ways to cook your chicken.</p>
+                </div>
+              </article>
+            </div>
+            <div class="tile is-parent is-vertical">
+              <article class="tile is-child">
+                <div class="field">
+                  <div class="control">
+                    <input class="button is-primary is-pulled-right is-hovered" type="submit" id="drinkidea"
+                      value="Pair with a cocktail">
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <hr>
+
+    <!-- Show a random drink name, thumbnail and ingredients -->
+    <section id="drinkcard">
+      <div class="container is-fluid mt-6">
+        <div class="tile box is-ancestor is-vertical has-background-grey-light">
+          <div class="tile is-parent is-vertical">
+            <article class="tile notification content is-child">
+              <p class="subtitle is-5">Try this cocktail:</p>
+              <div class="has-text-left" id="drink"></div>
+              <div class="has-text-centered" id="drinkimage"></div>
+              <div class="has-text-left">
+                <p class="subtitle is-5">Ingredients:</p>
+                <ol id="drinkingredient"></ol>
+              </div>
+              <p class="subtitle is-5">How to make it:</p>
+              <div class="has-text-left" id="drinkrecipe"></div>
+            </article>
+          </div>
+          <div class="tile is-parent is-vertical">
+            <article class="tile is-child">
+              <input class="button is-primary is-pulled-right is-hovered" type="reset" id="resetdrink"
+                value="Try another cocktail">
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
   </section>
 
-<script src="./assets/js/ingredients.js"></script>
+  <script src="./assets/js/ingredients.js"></script>
 
 </body>
 
