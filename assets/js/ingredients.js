@@ -31,6 +31,8 @@ var list = JSON.parse(localStorage.getItem('ingredients')) || [];
         // inputE1.val('new val');
         
         console.log(inputE1);
+
+        getIngredients();
     });
         // ').click(function() {
 
@@ -65,48 +67,36 @@ var list = JSON.parse(localStorage.getItem('ingredients')) || [];
         
         
         var getIngredients = function() {
-            var urlE1 = "https://api.spoonacular.com/recipes/findByIngredients?ingredients=";
-            // var urlE6 = "/findByIngredients?apiKey=54dabc814050472fb2b3631a332e7a58";
-            var urlE7 = "&number=8&limitLicense=true&ranking=1&ignorePantry=true";
+            var urlE1 = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=54dabc814050472fb2b3631a332e7a58&ingredients=";
+            var urlE6 = "&number=1&limitLicense=true&ranking=1&ignorePantry=true";
             var urlE2 = "apples,";
             var urlE3 = "flour,";
             var urlE4 = "sugar";
-            var getIngredientsUrl = urlE1 + urlE2 + urlE3 + urlE4 + urlE7;
-            
+            var urlE5 = "";
+            var getIngredientsUrl = urlE1 + urlE2 + urlE3 + urlE4 + urlE6;            
             console.log(getIngredientsUrl);
-            
-
+        
             // Display the result onpage
-            $.getJSON(urlE1 + urlE2+ urlE6).done(function(data){
+            $.getJSON(getIngredientsUrl).done(function(data){
                 console.log(data);
+            
+                // (O) 6. display recipe function
+            function displayIngredients(list) {
+                // Empties out the html
+                $('#ingredient-name').empty();
 
-            $.ajax({
-            url: "https://api.spoonacular.com/recipes/"+id+"/information?apiKey=54dabc814050472fb2b3631a332e7a58",
-            success:function(data) {
-                console.log('success', data);
-            }
+                // ########## not necessary yet, but keep in case it's needed later - iterates over the 'list' 
+                // for (var i = 0; i < list.length; i++) {
+                //     // Sets the input values
+                //     var ingredientE1 = $('<p>');
+                //     ingredientE1.text(list[i]);
+                //     toDoClose.addClass('subtitle');
+
+                
+            };
             });
-        };
 
-    // (O) 6. display recipe function
-    function displayIngredients(list) {
-        // Empties out the html
-        $('#ingredient-name').empty();
-
-        // Iterates over the 'list'
-        for (var i = 0; i < list.length; i++) {
-            // Sets the input values
-            var ingredientE1 = $('<p>');
-            ingredientE1.text(list[i]);
-            toDoClose.addClass('subtitle');
-
-            // <figure class="image is-128x128">
-            //   <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
-            // </figure><br>
-            // <div class="content">
-            //   <p class="" id="ingredient-description"></p>
         }
-    };
 
 // (M) 7. run second API for drinks to match with the recipe
 // Cocktail function to get random suggestion based on previous click
