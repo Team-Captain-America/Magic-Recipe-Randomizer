@@ -1,10 +1,10 @@
 /* page background image */
-body { 
-     background-image: url(/assets/img/OH3C840.jpg) ;
+html { 
+     background-image: url(/assets/img/OH3C840.jpg);
      background-position: center center;
-     background-repeat:  no-repeat;
+     background-repeat: no-repeat;
      background-attachment: fixed;
-     background-size:  cover;
+     background-size: cover;
      background-color: #ffffff;
      opacity: 0.85;
 }
@@ -18,4 +18,13 @@ body {
 .textcolor, .hero, .label {
     color: #ffffff;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.hero {
+    vertical-align: middle;
+}
+
+/* need to align the button on the input form to center */
+.form.button {
+    align-items: center;
 }

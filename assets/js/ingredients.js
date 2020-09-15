@@ -1,10 +1,10 @@
 // (A) 1. create variables of major sections to use within all javascript
 
+
 // (A) 3. function to collect all input ingredients
 
 // Hidden recipe card and drink card sections on page load
-
-$(function() {
+$(document).ready(function() {
     $('#content-container').hide();
 });
 
@@ -14,102 +14,101 @@ var list = JSON.parse(localStorage.getItem('ingredients')) || [];
     $(document).ready(function() {
     
         // Hide the ingredients search section when the recipe is displayed
-        $("#submitinput").click(function(){
-            $('.form').hide();
-            });
+        $('#submitinput').on('click',function(event){   
+            event.preventDefault();
 
-        // Create variables from all input ingredients
-        // Check for click events on the form
-        var inputE1 = $('#input').val();
+            // Create variables from all input ingredients
+            var inputE1 = $('#input0').val().trim();
+            var inputE2 = $('#input1').val().trim();
+            var inputE3 = $('#input2').val().trim();
+            var inputE4 = $('#input3').val().trim();
+            var inputE5 = $('#input4').val().trim();
 
-        var taskArray = new Array();
-        $("input[id=input0").each(function() {
-            console.log(taskArray);
+
+            localStorage.setItem("#input0" ,JSON.stringify(list));
+
+            // Hide the "form" section
+            $("#form").hide();
+            // Hide the "drink" section
+            $("#drinkcard").hide();
+            // Show "content-container"
+            $("#content-container").show();
+
+            getIngredients();
+
         });
-
-        // Add the new variable val to Ingredients0
-        // inputE1.val('new val');
-        
-       // console.log(inputE1);
-
-        getIngredients();
     });
-        // ').click(function() {
 
-        //         var inputE1 = $('#input0').val();
-        //         var inputE2 = $('#input1').val();
-        //         var inputE3 = $('#input2').val();
-        //         var inputE4 = $('#input3').val();
-        //         var inputE5 = $('#input4').val();
-        
-
-
-            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
-            // $(".navbar-burger").toggleClass("is-active");
-            // $(".navbar-menu").toggleClass("is-active");
-    
-    //     var taskArray = new Array();
-    //     $("input[name=input]").each(function() {
-    //    taskArray.push($(this).val());
-
-    //    console.log(taskArray);
-    //     });
+        // var taskArray = new Array();
+        // $("input[id=input0").each(function() {
+        //     console.log(taskArray);
+        // });
 
         // update ingredients list into array
         // list.push(ingredients);
 
-        // displayIngredients
-    
+        // displayIngredients();
+        // WORKING$ function displayIngredients(list) {
+        //     // Empties out the html
+        //     $('#ingredient-name').empty();
+
         //// (M) 4. set localstorage
         localStorage.setItem('ingredients', JSON.stringify(list));
 
-
-
-
-        // (O) 5. create function for getting ingredients data from API with input variables
-
-        
-    
-
-          
-     
-       
+        // (O) 5. create function for getting ingredients data from API with input variables 
         var getIngredients = function() {
-            var urlE1 = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=54dabc814050472fb2b3631a332e7a58&ingredients=";
-            var urlE6 = "&number=1&limitLicense=true&ranking=1&ignorePantry=true";
-            var urlE2 = ""
 
-            var getIngredientsUrl = urlE1 + urlE2 + urlE6;            
+            // Using the complex query API to get all necessary obj in returned array
+            var urlE1 = "https://api.spoonacular.com/recipes/complexSearch?apiKey=54dabc814050472fb2b3631a332e7a58&";
+            var urlE6 = "&&instructionsRequired=true&addRecipeInformation=true&number=1&ignorePantry=true"
+            var urlE2 = "includeIngredients=";
+            var urlE3 = "apple";
+            var urlE4 = "sugar";
+            var urlE5 = "flour";
+                // ############# The Find by Ingredients API
+                // var urlE1 = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=54dabc814050472fb2b3631a332e7a58&ingredients=";
+                // var urlE2 = "apples,";
+                // var urlE3 = "flour,";
+                // var urlE4 = "sugar";
+                // var urlE5 = "";
+                // var urlE6 = "&number=1&limitLicense=false&ranking=1&ignorePantry=true";
+            var getIngredientsUrl = urlE1 + urlE2 + urlE3 + "&" + urlE4 + "&" + urlE5 + urlE6;            
             console.log(getIngredientsUrl);
         
-            // Display the result onpage
+            // (O) 6. display recipe function
             $.getJSON(getIngredientsUrl).done(function(data){
                 console.log(data);
 
-                $.each(data.recipes
-                )
-            
-                // (O) 6. display recipe function
-            function displayIngredients(list) {
-                // Empties out the html
-                $('#ingredient-name').empty();
-
-                // ########## not necessary yet, but keep in case it's needed later - iterates over the 'list' 
-                // for (var i = 0; i < list.length; i++) {
-                //     // Sets the input values
-                //     var ingredientE1 = $('<p>');
-                //     ingredientE1.text(list[i]);
-                //     toDoClose.addClass('subtitle');
-
-                
-            };
-            });
-
-        }
-
+                $.each(data.results, function(index, recipe) {
+                    // getting the random recipe name
+                    var recipeName = recipe.title;
+                    var recipeTextE1 = $("<p>").html(index + recipeName);
+                    recipeTextE1.addClass("title");
+                    recipeTextE1.appendTo("#recipetitle");
+               
+                    // getting the recipe image thumb 
+                    var recipeImage = recipe.image;
+                    // probably just need to remove the "0" and it will work
+                    var recipeTextE2 = $("<img>").html('img src="' + index + recipeImage +'">');
+                    console.log(recipeImage);
+                    recipeTextE2.appendTo("#recipeimage");
         
+                    // getting the recipe ingredients
+                    var recipeIngredients = [recipe.strIngredient];
+                    console.log(recipeIngredients);
+                    var recipeTextIng1 = $("<ul>").html(index + recipeIngredients);
+                    recipeTextIng1.appendTo("#recipeingredients");
+           
+                    // getting the recipe for the recipe
+                    var recipeDetails = data.recipe;
+                    // probably just need to remove the "0" and it will work
+                    var recipeTextE3 = $("<p>").html(index + recipeDetails);
+                    console.log(recipeDetails);
+                    recipeTextE3.appendTo("#recipe");
+                });
+            });
+        };
 
-// (M) 7. run second API for drinks to match with the recipe
 // Cocktail function to get random suggestion based on previous click
 var getDrink = function() {
     var getDrinkUrl = "https://www.thecocktaildb.com/api/json/v1/1/random.php";
@@ -118,6 +117,8 @@ var getDrink = function() {
     $.getJSON(getDrinkUrl).done(function(data){
         console.log(data);
 
+        // Hide the "drink" section
+        $("#drinkcard").show();
 
         $.each(data.drinks, function(index, drink) {
             // getting the random drink name
@@ -155,8 +156,9 @@ var getDrink = function() {
             drinkTextE3.appendTo("#drinkrecipe");
         })
     });
-}
+};
 
+// Check for click events to get a drink suggestion
 $("#drinkidea").on('click', getDrink);
 
 // Function to get another cocktail suggestion
