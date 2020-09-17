@@ -125,26 +125,26 @@ var list = JSON.parse(localStorage.getItem('ingredients')) || [];
                 console.log(E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11, E12);
 
                 // getting the random drink name
-                $("<p>").addClass("has-text-centered").html(E1).appendTo("#drink");
+                $("<p>").html(E1).appendTo("#drink");
 
                 // getting the drink image thumb 
-                $("<img>").addClass("has-text-centered").html(E2).appendTo("#drinkimage");
+                $("<img>").html(E2).appendTo("#drinkimage");
 
                 // getting the type of glass to make the cocktail 
                 // $("<img>").html(E3).appendTo("#drinkimage");
-                $('#drinkimage').empty().addClass("has-text-centered").html('<img src="' + E2 + '">').appendTo("#drinkimagecontainer");
+                $('#drinkimage').empty().html('<img src="' + E2 + '">').appendTo("#drinkimagecontainer");
 
                 // Getting the drink ingredients ++ up to 15 ingredients
-                if (E5 != null) { $("<li>").html(E5).addClass("has-text-centered").appendTo("#drinkingredient") };
-                if (E6 != null) { $("<li>").html(E6).addClass("has-text-centered").appendTo("#drinkingredient") };
-                if (E7 != null) { $("<li>").html(E7).addClass("has-text-centered").appendTo("#drinkingredient") };
-                if (E8 != null) { $("<li>").html(E8).addClass("has-text-centered").appendTo("#drinkingredient") };
-                if (E9 != null) { $("<li>").html(E9).addClass("has-text-centered").appendTo("#drinkingredient") };
-                if (E10 != null) { $("<li>").html(E10).addClass("has-text-centered").appendTo("#drinkingredient") };
-                if (E11 != null) { $("<li>").html(E11).addClass("has-text-centered").appendTo("#drinkingredient") };
-                if (E12 != null) { $("<li>").html(E12).addClass("has-text-centered").appendTo("#drinkingredient") };
-                if (E13 != null) { $("<li>").html(E13).addClass("has-text-centered").appendTo("#drinkingredient") };
-                if (E14 != null) { $("<li>").html(E14).addClass("has-text-centered").appendTo("#drinkingredient") };
+                if (E5 != null) { $("<li>").html(E5).appendTo("#drinkingredient") };
+                if (E6 != null) { $("<li>").html(E6).appendTo("#drinkingredient") };
+                if (E7 != null) { $("<li>").html(E7).appendTo("#drinkingredient") };
+                if (E8 != null) { $("<li>").html(E8).appendTo("#drinkingredient") };
+                if (E9 != null) { $("<li>").html(E9).appendTo("#drinkingredient") };
+                if (E10 != null) { $("<li>").html(E10).appendTo("#drinkingredient") };
+                if (E11 != null) { $("<li>").html(E11).appendTo("#drinkingredient") };
+                if (E12 != null) { $("<li>").html(E12).appendTo("#drinkingredient") };
+                if (E13 != null) { $("<li>").html(E13).appendTo("#drinkingredient") };
+                if (E14 != null) { $("<li>").html(E14).appendTo("#drinkingredient") };
 
                 // getting the recipe for the drink
                 $("<p>").html(E4).appendTo("#drinkrecipe");
