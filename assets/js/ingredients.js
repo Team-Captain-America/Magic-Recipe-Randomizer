@@ -125,14 +125,14 @@ var list = JSON.parse(localStorage.getItem('ingredients')) || [];
                 console.log(E1, E2, E3, E4, E5, E6, E7, E8, E9, E10, E11, E12);
 
                 // getting the random drink name
-                $("<p>").html(E1).appendTo("#drink");
+                $("<p>").html(E1).addClass("has-text-centered").appendTo("#drink");
 
                 // getting the drink image thumb 
-                $("<img>").html(E2).appendTo("#drinkimage");
+                $("<img>").html(E2).addClass("has-text-centered").appendTo("#drinkimage");
 
                 // getting the type of glass to make the cocktail 
                 // $("<img>").html(E3).appendTo("#drinkimage");
-                $('#drinkimage').empty().html('<img src="' + E2 + '">').appendTo("#drinkimagecontainer");
+                $('#drinkimage').empty().html('<img src="' + E2 + '">').addClass("has-text-centered").appendTo("#drinkimagecontainer");
 
                 // Getting the drink ingredients ++ up to 15 ingredients
                 if (E5 != null) { $("<li>").html(E5).appendTo("#drinkingredient") };
