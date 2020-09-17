@@ -1,9 +1,14 @@
+// (A) 1. create variables of major sections to use within all javascript
+
+
+// (A) 3. function to collect all input ingredients
+
 // Hidden recipe card and drink card sections on page load
 $(document).ready(function() {
     $('#content-container').hide();
 });
 
-// create localstorage for upcoming array
+    // create localstorage for upcoming array
 var list = JSON.parse(localStorage.getItem('ingredients')) || [];
 
 // +++ WORKING - Help the user see autosuggested ingredients
@@ -68,7 +73,7 @@ var list = JSON.parse(localStorage.getItem('ingredients')) || [];
 
         // Function to collect all input ingredients
         $('#submitinput').on('click',function(event){   
-            event.preventDefault();        
+            event.preventDefault();
 
             // Create variables from all input ingredients
             var inputE1 = $('#input0').val().trim();
@@ -77,9 +82,9 @@ var list = JSON.parse(localStorage.getItem('ingredients')) || [];
             var inputE4 = $('#input3').val().trim();
             var inputE5 = $('#input4').val().trim();
 
-            console.log(inputE1, inputE2, inputE3, inputE4, inputE5);
 
-            // Hide the ingredients search section when the recipe is displayed
+            localStorage.setItem("#input0",JSON.stringify(list));
+
             // Hide the "form" section
             $("#form").hide();
             // Hide the "drink" section
@@ -89,12 +94,18 @@ var list = JSON.parse(localStorage.getItem('ingredients')) || [];
 
             getIngredients();
         });
+    });
+
+        // var taskArray = new Array();
+        // $("input[id=input0").each(function() {
+        //     console.log(taskArray);
+        // });
 
         // update ingredients list into array
         // list.push(ingredients);
 
         // displayIngredients();
-        // +++ WORKING - function displayIngredients(list) {
+        // WORKING$ function displayIngredients(list) {
         //     // Empties out the html
         //     $('#ingredient-name').empty();
 
@@ -148,6 +159,8 @@ var getIngredients = function() {
         });
     });
 };
+
+
 
 // Cocktail function to get random suggestion based on previous click
 var getDrink = function() {
