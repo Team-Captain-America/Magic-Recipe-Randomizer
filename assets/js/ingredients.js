@@ -72,9 +72,9 @@ var list = JSON.parse(localStorage.getItem('ingredients')) || [];
                     })
 
                     // getting the ingredients
-                    var ing = $[this[0].name];
-                    $("<li>").text(ing).addClass("ml-5").appendTo("#recipeingredients");
-                    console.log(ing);
+//                     var ing = $[this[0].name];
+//                     $("<li>").text(ing).addClass("ml-5").appendTo("#recipeingredients");
+//                     console.log(ing);
 
                     console.log(iE1, iE2);
 
