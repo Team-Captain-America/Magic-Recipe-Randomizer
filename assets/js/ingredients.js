@@ -9,45 +9,61 @@ var list = JSON.parse(localStorage.getItem('ingredients')) || [];
 // +++ WORKING - Help the user see autosuggested ingredients
 // var autoSearch = function(){
     var autoUrlE1 = "https://api.spoonacular.com/food/ingredients/autocomplete?apiKey=54dabc814050472fb2b3631a332e7a58&number=10&";
+    // #### "AP" is just to try autoUrlE2 works
     var autoUrlE2 = "query=ap";
-    // var autoUrlE3 = $('#input0').charAt(2).val().trim();
+    var autoUrlE3 = $('#input0');
 
     // Final URL to use for autosearch suggestions
     var autoSearchUrl = autoUrlE1 + autoUrlE2;            
     console.log(autoSearchUrl);
+    
+    // Function to run the letters to find the matching ingredient names
+    // $(function()var c_id=0;
+
+    // var inputE0 = $("#input0").val();
+
+    // $(function matchKeyword() {
+    //     $('#protein').find('option[value="' +CompanyName + '"]').attr('id');        
+    // });
 
     // +++ WORKING - Get the API to see if the data is coming back
-    // $.getJSON(autoSearchUrl).done(function(data){
-        // console.log(data);
+    $.getJSON(autoSearchUrl).done(function(data){
+        console.log(data);
           
-        //   $(function() {
+        // create a loop to create an array of new items from search to append to datalist
+        // re-run the search as many times as necessary till the user clicks on the ingredient and also submit
+    
+        $(function() {
             var results = {
               source: [$.getJSON(autoSearchUrl)],
               minLength: 2
             }
-            console.log(results);
+            console.log(results.responsetext);
 
-          $("input.searchInput").on("keydown.autocomplete", function() {
-            $(this).autocomplete(results);
+            var arr = [results.responsetext];
+
+          $("#input0").on("keydown.autocomplete", function() {
+            $(this).autocomplete(results).appendTo("#protein");
           });
         
           var addInput = function() {
-            var inputHTML = " <input name='search' value='' class='searchInput' maxlength='15' />";
-            $(inputHTML).appendTo("#input0");
-            $("input.searchInput:last").focus();
+            var proteinResult = new Array(
+                html("<option value=response.text/>");
+            $(proteinResult).appendTo("#protein");
+            $("#input0:last").focus();
           };
-          
-          console.log(inputHTML);
+
+          console.log(proteinInput);
 
         // Testing to see if the first input section will work first
-          if (!$("#input0").find("input.searchInput").length) {
+          if (!$("#input0").find("#input0").length) {
             addInput();
           }
         
-          $("input#input0").click(addInput);
-        // });
+          $("#input0").click(addInput);
+        });
 
-    // });
+    });
 // };
 
         // Function to collect all input ingredients
@@ -71,8 +87,7 @@ var list = JSON.parse(localStorage.getItem('ingredients')) || [];
             // Show "content-container"
             $("#content-container").show();
 
-            // getIngredients();
-
+            getIngredients();
         });
 
         // update ingredients list into array
@@ -86,59 +101,53 @@ var list = JSON.parse(localStorage.getItem('ingredients')) || [];
         //// (M) 4. set localstorage
         localStorage.setItem('ingredients', JSON.stringify(list));
 
-        // (O) 5. create function for getting ingredients data from API with input variables 
-        var getIngredients = function() {
+// Create function for getting ingredients data from API with input variables 
+var getIngredients = function() {
+    // Using the complex query API to get all necessary obj in returned array
+    // var urlE1 = "https://api.spoonacular.com/recipes/complexSearch?apiKey=#54dabc814050472fb2b3631a332e7a58&";
+    var urlE6 = "&&instructionsRequired=true&addRecipeInformation=true&number=1&ignorePantry=true"
+    var urlE2 = "includeIngredients=";
+    var urlE3 = "apple";
+    var urlE4 = "sugar";
+    var urlE5 = "flour";
+        // ############# The Find by Ingredients API
+        // var urlE1 = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=54dabc814050472fb2b3631a332e7a58&ingredients=";
+        // var urlE2 = "apples,";
+        // var urlE3 = "flour,";
+        // var urlE4 = "sugar";
+        // var urlE5 = "";
+        // var urlE6 = "&number=1&limitLicense=false&ranking=1&ignorePantry=true";
+    var getIngredientsUrl = urlE1 + urlE2 + urlE3 + "&" + urlE4 + "&" + urlE5 + urlE6;            
+    console.log(getIngredientsUrl);
 
-            // Using the complex query API to get all necessary obj in returned array
-            // var urlE1 = "https://api.spoonacular.com/recipes/complexSearch?apiKey=#54dabc814050472fb2b3631a332e7a58&";
-            var urlE6 = "&&instructionsRequired=true&addRecipeInformation=true&number=1&ignorePantry=true"
-            var urlE2 = "includeIngredients=";
-            var urlE3 = "apple";
-            var urlE4 = "sugar";
-            var urlE5 = "flour";
-                // ############# The Find by Ingredients API
-                // var urlE1 = "https://api.spoonacular.com/recipes/findByIngredients?apiKey=54dabc814050472fb2b3631a332e7a58&ingredients=";
-                // var urlE2 = "apples,";
-                // var urlE3 = "flour,";
-                // var urlE4 = "sugar";
-                // var urlE5 = "";
-                // var urlE6 = "&number=1&limitLicense=false&ranking=1&ignorePantry=true";
-            var getIngredientsUrl = urlE1 + urlE2 + urlE3 + "&" + urlE4 + "&" + urlE5 + urlE6;            
-            console.log(getIngredientsUrl);
+    // (O) 6. display recipe function
+    $.getJSON(getIngredientsUrl).done(function(data){
+        console.log(data);
 
-            // (O) 6. display recipe function
-            $.getJSON(getIngredientsUrl).done(function(data){
-                console.log(data);
+        $.each(data.results, function(i, recipe) {
 
-                $.each(data.results, function(index, recipe) {
-                    // getting the random recipe name
-                    var recipeName = recipe.title;
-                    var recipeTextE1 = $("<p>").html(index + recipeName);
-                    recipeTextE1.addClass("title");
-                    recipeTextE1.appendTo("#recipetitle");
-                
-                    // getting the recipe image thumb 
-                    var recipeImage = recipe.image;
-                    // probably just need to remove the "0" and it will work
-                    var recipeTextE2 = $("<img>").html('img src="' + index + recipeImage +'">');
-                    console.log(recipeImage);
-                    recipeTextE2.appendTo("#recipeimage");
+            var iE1 = recipe.title;
+            var iE2 = recipe.image;
+            var iE3 = recipe.strIngredient;
+            var iE4 = data.recipe;
 
-                    // getting the recipe ingredients
-                    var recipeIngredients = [recipe.strIngredient];
-                    console.log(recipeIngredients);
-                    var recipeTextIng1 = $("<ul>").html(index + recipeIngredients);
-                    recipeTextIng1.appendTo("#recipeingredients");
-            
-                    // getting the recipe for the recipe
-                    var recipeDetails = data.recipe;
-                    // probably just need to remove the "0" and it will work
-                    var recipeTextE3 = $("<p>").html(index + recipeDetails);
-                    console.log(recipeDetails);
-                    recipeTextE3.appendTo("#recipe");
-                });
-            });
-        };
+            console.log(iE1, iE2, iE3, iE4)
+
+            // getting the random recipe name
+            $("<p>").html(iE1).addClass("title").appendTo("#recipetitle");
+        
+            // getting the recipe image thumb 
+            $("<img>").html(iE2).appendTo("#recipeimage");
+
+            // getting the recipe ingredients
+            // ### might not work because I haven't tried it yet...
+            $("<li>").html(iE3).appendTo("#recipeingredients");
+    
+            // getting the recipe for the recipe
+            $("<p>").html(iE4).appendTo("#recipe");
+        });
+    });
+};
 
 // Cocktail function to get random suggestion based on previous click
 var getDrink = function() {

@@ -55,29 +55,36 @@
           <div class="field">
             <label class="label">Add a protein:</label>
             <div class="control">
-              <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input0">
+              <input list="protein" onkeydown="matchKeyword()" class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input0">
+              <datalist id="protein"></datalist>
             </div>
           </div>
           <div class="field">
             <label class="label">Add a vegetable:</label>
             <div class="control">
-              <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input1">
+              <input list="veg" onkeydown="matchKeyword()" class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input1">
+              <datalist id="veg"></datalist>
             </div>
           </div>
           <div class="field">
             <label class="label">Add a vegetable:</label>
             <div class="control">
-              <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input2">
+              <input list="veg1" onkeydown="matchKeyword()" class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input2">
+              <datalist id="veg1"></datalist>
             </div>
           </div>
           <div class="field">
             <label class="label">Add a spice:</label>
-            <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input3">
+            <div class="control">
+            <input list="spice" onkeydown="matchKeyword()" class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input3">
+            <datalist id="spice"></datalist>
+          </div>
           </div>
           <div class="field">
             <label class="label">Add a spice:</label>
             <div class="control">
-              <input class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input4">
+              <input list="spice1" onkeydown="matchKeyword()" class="input is-rounded mb-3" type="text" placeholder="enter ingredient" name="input" id="input4">
+              <datalist id="spice1"></datalist>
             </div>
           </div>
         </div>
