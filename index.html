@@ -49,7 +49,7 @@
     </div>
 
     <!-- Input form for ingredients -->
-    <form class="form" id="form">
+    <form class="form" id="form" autocomplete="on">
       <div class="container is-fluid">
         <div class="is-horizontal field-body">
           <div class="field">
@@ -99,7 +99,6 @@
         <div class="tile is-ancestor">
           <div class="tile is-parent">
             <article class="tile is-child box">
-              <button class="delete"></button>
               <p class="subtitle" id="ingredient-name">Ingredient 0</p>
               <figure class="image is-64x64">
                 <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
@@ -111,7 +110,6 @@
           </div>
           <div class="tile is-parent">
             <article class="tile is-child box">
-              <button class="delete"></button>
               <p class="subtitle" id="ingredient-name">Ingredient 1</p>
               <figure class="image is-64x64">
                 <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
@@ -123,7 +121,6 @@
           </div>
           <div class="tile is-parent">
             <article class="tile is-child box">
-              <button class="delete"></button>
               <p class="subtitle" id="ingredient-name">Ingredient 2</p>
               <figure class="image is-64x64">
                 <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
@@ -135,7 +132,6 @@
           </div>
           <div class="tile is-parent">
             <article class="tile is-child box">
-              <button class="delete"></button>
               <p class="subtitle" id="ingredient-name">Ingredient 3</p>
               <figure class="image is-64x64">
                 <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
@@ -147,7 +143,6 @@
           </div>
           <div class="tile is-parent">
             <article class="tile is-child box">
-              <button class="delete"></button>
               <p class="subtitle" id="ingredient-name">Ingredient 4</p>
               <figure class="image is-64x64">
                 <img class="is-rounded" src="https://bulma.io/images/placeholders/128x128.png">
@@ -204,14 +199,16 @@
         <div class="tile box is-ancestor is-vertical has-background-grey-light">
           <div class="tile is-parent is-vertical">
             <article class="tile notification content is-child">
-              <p class="subtitle is-5">Try this cocktail:</p>
-              <div class="has-text-left" id="drink"></div>
-              <div class="has-text-centered" id="drinkimage"></div>
+              <p class="subtitle is-5 has-text-weight-bold">Try this cocktail:</p>
+              <p class="has-text-left" id="drink"></p>
+              <figure class="image is-128x128" id="drinkimagecontainer">
+                <div class="has-text-centered" id="drinkimage"></div>
+              </figure>
               <div class="has-text-left">
-                <p class="subtitle is-5">Ingredients:</p>
+                <p class="subtitle is-5 has-text-weight-bold">Ingredients:</p>
                 <ol id="drinkingredient"></ol>
-              </div>
-              <p class="subtitle is-5">How to make it:</p>
+              </div><br>
+              <p class="subtitle is-5 has-text-weight-bold">How to make it:</p>
               <div class="has-text-left" id="drinkrecipe"></div>
             </article>
           </div>
