@@ -135,16 +135,16 @@ var list = JSON.parse(localStorage.getItem('ingredients')) || [];
                 $('#drinkimage').empty().addClass("has-text-centered").html('<img src="' + E2 + '">').appendTo("#drinkimagecontainer");
 
                 // Getting the drink ingredients ++ up to 15 ingredients
-                if (E5 != null) { $("<li>").html(E5).appendTo("#drinkingredient") };
-                if (E6 != null) { $("<li>").html(E6).appendTo("#drinkingredient") };
-                if (E7 != null) { $("<li>").html(E7).appendTo("#drinkingredient") };
-                if (E8 != null) { $("<li>").html(E8).appendTo("#drinkingredient") };
-                if (E9 != null) { $("<li>").html(E9).appendTo("#drinkingredient") };
-                if (E10 != null) { $("<li>").html(E10).appendTo("#drinkingredient") };
-                if (E11 != null) { $("<li>").html(E11).appendTo("#drinkingredient") };
-                if (E12 != null) { $("<li>").html(E12).appendTo("#drinkingredient") };
-                if (E13 != null) { $("<li>").html(E13).appendTo("#drinkingredient") };
-                if (E14 != null) { $("<li>").html(E14).appendTo("#drinkingredient") };
+                if (E5 != null) { $("<li>").html(E5).addClass("has-text-centered").appendTo("#drinkingredient") };
+                if (E6 != null) { $("<li>").html(E6).addClass("has-text-centered").appendTo("#drinkingredient") };
+                if (E7 != null) { $("<li>").html(E7).addClass("has-text-centered").appendTo("#drinkingredient") };
+                if (E8 != null) { $("<li>").html(E8).addClass("has-text-centered").appendTo("#drinkingredient") };
+                if (E9 != null) { $("<li>").html(E9).addClass("has-text-centered").appendTo("#drinkingredient") };
+                if (E10 != null) { $("<li>").html(E10).addClass("has-text-centered").appendTo("#drinkingredient") };
+                if (E11 != null) { $("<li>").html(E11).addClass("has-text-centered").appendTo("#drinkingredient") };
+                if (E12 != null) { $("<li>").html(E12).addClass("has-text-centered").appendTo("#drinkingredient") };
+                if (E13 != null) { $("<li>").html(E13).addClass("has-text-centered").appendTo("#drinkingredient") };
+                if (E14 != null) { $("<li>").html(E14).addClass("has-text-centered").appendTo("#drinkingredient") };
 
                 // getting the recipe for the drink
                 $("<p>").html(E4).appendTo("#drinkrecipe");
