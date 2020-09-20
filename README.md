@@ -53,7 +53,7 @@ They will be presented with another new cocktail idea that replaces the first on
 
 
 ### Links
-[Powerpoint] (https://docs.google.com/presentation/d/1I58wvUYPRAkluo4IN4RpHu8R3myXx4Qkxg-YNvdb0DE/edit#slide=id.p)
+[Powerpoint](https://docs.google.com/presentation/d/1I58wvUYPRAkluo4IN4RpHu8R3myXx4Qkxg-YNvdb0DE/edit#slide=id.p)
 
 [Live URL](https://team-captain-america.github.io/Magic-Recipe-Randomizer/)
 
