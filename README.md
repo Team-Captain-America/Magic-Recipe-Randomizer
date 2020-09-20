@@ -4,6 +4,15 @@
 This is a website that that provides recipe recommendations personalized to the individual's tastes with available semantic recipe and cocktail search. Magic Recipe Randomizer allows users to search by ingredient what an individual has at hand at home and uses this information to categorize food for search and make recipe and cocktail recommendations.
 
 
+### Technologies
+* HTML/CSS
+* Javascript
+* Bulma
+* Jquery
+* Cocktail API
+* Spoonacular API 
+
+
 ### Acceptance Criteria
 GIVEN I am an authenticated user
 
