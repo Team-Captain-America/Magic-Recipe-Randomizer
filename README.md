@@ -25,19 +25,13 @@ If
 User opens page
 
 Then
-They can find an intro gif on how the app works and can already use the Ingredients Form
+They can already use the Ingredients Form
 
 If
 User clicks the "Find a Recipe" button
 
 Then
-The Ingredients Form will disappear and see a detailed list of the ingredients they added and a matching recipe below with details
-
-If
-The user wants to clicks the "Try another Recipe" button
-
-Then
-They will be presented with another new recipe idea that replaces the first one
+The Ingredients Form will disappear and see a list of the ingredients they added and a matching recipe below with details
 
 If
 The user clicks the "Pair with a Cocktail" button
